@@ -1,0 +1,45 @@
+﻿@model List<DataFirstApproach.Models.EmpModel>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h1>Employee List</h1>
+
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Mobile</th>
+            <th scope="col">Company</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Email</td>
+                <td>@item.Mobile</td>
+                <td>@item.Company</td>
+                <td>@item.Salary</td>
+                
+               <td> <a href="@Url.Action("Edit", "Home", new {item.Id})" class="btn btn-primary">Edit</a></td>
+                
+                <td><a href="@Url.Action("Delete", "Home", new {item.Id})" class="btn btn-primary">Delate</a></td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+

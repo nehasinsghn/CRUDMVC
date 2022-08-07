@@ -1,0 +1,42 @@
+﻿@model DataFirstApproach.Models.EmpModel
+@{
+    ViewBag.Title = "Create";
+}
+<style>
+    .error{
+        color:blue
+    }
+</style>
+
+<h2>Create</h2>
+@using (Html.BeginForm("Create", "Home", FormMethod.Post))
+{
+    @Html.HiddenFor(x=>x.Id)
+<div class="form-group">
+    <label>Name</label>
+    @Html.TextBoxFor(x => x.Name, new { @class = "from-control", @Placeholder = "Name", data_rule_required = "true" })
+    @Html.ValidationMessageFor(x => x.Name, "",new {@class="error"})
+</div>
+
+<div class="form-group">
+    <label>Email</label>
+    @Html.TextBoxFor(x=>x.Email, new { @class = "from-control", @Placeholder = "Email",data_val="true",data_val_required="must fill" })
+    @Html.ValidationMessageFor(x=>x.Email,"",new{@class="error"})
+</div>
+<div class="form-group">
+    <label>Mobile</label>
+    @Html.TextBoxFor(x => x.Mobile, new { @class = "from-control", @Placeholder = "Mobile",data_val="true", data_val_required="must be 11 digit" })
+    @Html.ValidationMessageFor(x => x.Mobile, "",new{@class= "error"})
+</div>
+<div class="form-group">
+    <label>Company</label>
+    @Html.TextBoxFor(x => x.Company, new { @class = "from-control", @Placeholder = "Company",@Required="required"})
+    @Html.ValidationMessageFor(x => x.Company, "",new{@class= "error"})
+</div>
+<div class="form-group">
+    <label>Salary</label>
+    @Html.TextBoxFor(m => m.Salary, new { @class = "from-control", @Placeholder = "Salary", data_rule_required = "true" })
+    @Html.ValidationMessageFor(x => x.Salary, "", new{@class= "error"})
+</div>
+<button type="submit" class="btn btn-primary">Submit</button>
+}
